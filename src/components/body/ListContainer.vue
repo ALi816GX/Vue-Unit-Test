@@ -1,8 +1,9 @@
 <template>
 
     <div>
+
         <ul>
-            <li v-for="item in list" key=""></li>
+            <li> </li>
         </ul>
 
     </div>
@@ -12,10 +13,9 @@
 
 
 <script>
+
     export default {
         name:"ListContainer"
-
-
     };
 
 

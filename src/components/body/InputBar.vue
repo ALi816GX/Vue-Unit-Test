@@ -1,7 +1,7 @@
 <template>
 
     <div>
-        <input type="text" v-model="value" @keydown.enter="handleClickAdd" value="" class="inputText"/>
+        <input type="text" value="" class="inputText"/>
         <input type="button" value="Add" class="button" />
     </div>
 
@@ -10,20 +10,15 @@
 
 
 <script>
+
     export default {
         name:"InputBar",
         data() {
             return{
                 value:""
             }
-        },
-        methods: {
-            handleClickAdd() {
-                this.$emit("push",this,value)
-            }
         }
     };
-
 
 </script>
 
