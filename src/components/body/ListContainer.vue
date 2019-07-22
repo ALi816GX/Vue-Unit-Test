@@ -1,11 +1,11 @@
 <template>
 
     <div>
-
-        <ul>
-            <li> </li>
-        </ul>
-
+        <ol>
+            <li>
+                <CheckBoxBar></CheckBoxBar>
+            </li>
+        </ol>
     </div>
 
 
@@ -14,8 +14,13 @@
 
 <script>
 
+    import CheckBoxBar from "./listcontaniner/CheckBoxBar.vue";
+
     export default {
-        name:"ListContainer"
+        name:"ListContainer",
+        components: {
+            CheckBoxBar
+        }
     };
 
 

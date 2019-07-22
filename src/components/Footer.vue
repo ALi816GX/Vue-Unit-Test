@@ -2,6 +2,8 @@
 
     <div>
 
+        <FooterButton></FooterButton>
+
     </div>
 
 
@@ -10,10 +12,14 @@
 
 <script>
 
-    export default {
-        name:"Footer"
-    };
+    import FooterButton from "./footer/FooterButton.vue";
 
+    export default {
+        name:"Footer",
+        components: {
+            FooterButton
+        }
+    };
 
 
 </script>
