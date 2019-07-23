@@ -3,9 +3,7 @@
 
         <Header></Header>
 
-        <Body v-on="onPushTodoItem" list="list" @push=""></Body>
-
-        <Footer></Footer>
+        <Body></Body>
 
     </div>
 </template>
@@ -14,36 +12,23 @@
 
     import Header from "./components/Header.vue";
     import Body from "./components/Body.vue";
-    import Footer from "./components/Footer.vue";
 
-    // let id = 0;
-    // const getId = () =>{
-    //
-    // }
 
     export default {
         name: 'app',
         components:{
             Header,
-            Body,
-            Footer
+            Body
         },
 
         methods: {
-            onPushTodoItem(value){
-                const  item = {
-                    value,
-                    finished:false,
-                    id:getId()
-                };
-                this.list.push(item);
-            }
+
         }
 
     };
 
-
 </script>
+
 
 <style>
     #app {

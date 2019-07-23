@@ -1,11 +1,8 @@
 <template>
 
     <div>
-
         <InputBar></InputBar>
-
         <ListContainer></ListContainer>
-
     </div>
 
 
@@ -14,8 +11,8 @@
 
 <script>
 
-    import InputBar from "./body/InputBar.vue";
-    import ListContainer from "./body/ListContainer.vue";
+    import InputBar from "../components/InputBar.vue";
+    import ListContainer from "../components/ListContainer.vue";
 
     export default {
 
@@ -23,7 +20,6 @@
         components:{
             InputBar,
             ListContainer
-
         },
 
         data(){
@@ -32,6 +28,5 @@
             }
         }
     };
-
 
 </script>

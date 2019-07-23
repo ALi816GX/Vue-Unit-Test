@@ -1,8 +1,8 @@
 <template>
 
     <div>
-        <input type="text" value="" class="inputText"/>
-        <input type="button" value="Add" class="button" />
+        <input type="text" @keyup.enter="handleClick()" v-model="message" class="inputText"/>
+        <input type="button" @click="handleClick()" value="Add" class="button" />
     </div>
 
 
@@ -15,8 +15,12 @@
         name:"InputBar",
         data() {
             return{
-                value:""
+                value:"",
+                list:[1,2,3,4],
             }
+        },
+        methods:{
+
         }
     };
 
