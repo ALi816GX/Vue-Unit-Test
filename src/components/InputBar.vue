@@ -1,7 +1,7 @@
 <template>
 
     <div>
-        <input type="text" @keyup.enter="handleClick()" v-model="message" class="inputText"/>
+        <input type="text" @keyup.enter="handleClick()" v-model="taskMessage" class="inputText"/>
         <input type="button" @click="handleClick()" value="Add" class="button" />
     </div>
 
@@ -15,12 +15,14 @@
         name:"InputBar",
         data() {
             return{
-                value:"",
-                list:[1,2,3,4],
+                taskMessage:"",
+                list:[],
             }
         },
         methods:{
+            handleClick(){
 
+            }
         }
     };
 
