@@ -11,21 +11,15 @@
 
 <script>
 
-    import InputBar from "../components/InputBar.vue";
+    import InputBar from "./Inputbar.vue";
     import ListContainer from "../components/ListContainer.vue";
 
     export default {
-
         name:"Body",
         components:{
             InputBar,
             ListContainer
         },
-
-        data(){
-            return{
-            }
-        }
     };
 
 </script>
