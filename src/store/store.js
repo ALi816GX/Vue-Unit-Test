@@ -1,20 +1,42 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+
+const states = {
+    buttonState: "ALL",
+    taskList: [],
+    taskListByState: [],
+    listLength: 0
+}
 
 
-Vue.use(Vuex);
+const getters = {
+    buttonState: state => state.buttonState,
+    taskList: state => state.taskList,
+    taskListByState: state => state.taskListByState,
+    listLength: state => state.taskList.length
+}
 
-const store = new Vuex.Store({
-    state:{
 
+const mutations = {
+    setButtonState(state, value) {
+        state.buttonState = value;
+        this.commit("changeTaskListByState");
     },
-    getters:{
 
+    addTaskToList(state, value) {
+        state.taskList.push(value);
+        this.commit("changeTaskListByState");
     },
-    mutations:{
-
+    changeTaskListByState(state) {
+        const STATE_TO_VALUE = {
+            ALL:state.taskList,
+            Active:state.taskList.filter(item => !item.isChecked),
+            Complete:state.taskList.filter(item => item.isChecked)
+        };
+        state.taskListByState = STATE_TO_VALUE[state.buttonState]
     }
+}
 
-});
-
-export default store;
+export default {
+    state: states,
+    getters,
+    mutations
+}
