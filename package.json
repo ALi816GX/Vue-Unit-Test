@@ -4,23 +4,33 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "test": "jest"
   },
   "dependencies": {
     "core-js": "^2.6.5",
     "lodash": "^4.17.15",
-    "vue": "^2.6.10",
+    "vue": "^2.4.4",
     "vuex": "^3.1.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.9.0",
     "@vue/cli-plugin-eslint": "^3.9.0",
     "@vue/cli-service": "^3.9.0",
+    "@vue/test-utils": "^1.0.0-beta.29",
+    "@babel/core": "^7.6.4",
+    "@babel/preset-env": "^7.6.3",
+    "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
+    "babel-jest": "^21.2.0",
+    "babel-loader": "^8.0.6",
+    "babel-preset-env": "^1.6.0",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
-    "vue-template-compiler": "^2.6.10"
+    "jest": "^21.2.1",
+    "regenerator-runtime": "^0.11.0",
+    "vue-jest": "^3.0.5",
+    "vue-template-compiler": "^2.4.4",
+    "webpack": "^4.41.2"
   },
   "eslintConfig": {
     "root": true,
@@ -34,6 +44,20 @@
     "rules": {},
     "parserOptions": {
       "parser": "babel-eslint"
+    }
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "vue"
+    ],
+    "transform": {
+      ".*\\.(vue)$": "vue-jest",
+      "^.+\\.js$": "<rootDir>/node_modules/babel-jest"
+    },
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/src/$1"
     }
   },
   "postcss": {

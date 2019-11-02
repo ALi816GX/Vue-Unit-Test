@@ -1,25 +1,19 @@
 <template>
-
-    <div>
-        <InputBar></InputBar>
-        <ListContainer></ListContainer>
-    </div>
-
-
+  <div>
+    <input-field></input-field>
+    <list-container></list-container>
+  </div>
 </template>
 
-
 <script>
+import ListContainer from "@/components/ListContainer";
+import InputField from "@/components/InputField";
 
-    import InputBar from "./Inputbar.vue";
-    import ListContainer from "../components/ListContainer.vue";
-
-    export default {
-        name:"Body",
-        components:{
-            InputBar,
-            ListContainer
-        },
-    };
-
+export default {
+  name: "Body",
+  components: {
+    InputField,
+    ListContainer
+  }
+};
 </script>
