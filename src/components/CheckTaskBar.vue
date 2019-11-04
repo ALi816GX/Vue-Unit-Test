@@ -2,7 +2,7 @@
   <div>
     <input type="checkbox" v-model="task.isChecked" @click="selected" />
     <span
-      v-bind:contenteditable="task.isEditable"
+      :contenteditable="task.isEditable"
       @dblclick="changeValue"
       @keydown.enter.prevent="changeValue"
       >{{ task.value }}</span
