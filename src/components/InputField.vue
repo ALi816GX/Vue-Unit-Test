@@ -18,7 +18,8 @@ export default {
   name: "InputField",
   data() {
     return {
-      itemValue: ""
+      itemValue: "",
+      keyUp: ""
     };
   },
   computed: {
@@ -27,6 +28,7 @@ export default {
   methods: {
     ...mapActions(["saveTaskToList"]),
     addItem() {
+      this.keyUp = "test";
       if (!_.isEmpty(_.trim(this.itemValue))) {
         const task = {
           key: this.listLength,
