@@ -5,7 +5,7 @@ import Vuex from "vuex";
 const localVue = createLocalVue();
 localVue.use(Vuex);
 
-describe("Test For TodoList", () => {
+describe("Test For InputField", () => {
   let wrapper, store, getters, actions;
   beforeEach(() => {
     getters = {

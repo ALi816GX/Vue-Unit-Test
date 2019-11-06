@@ -1,7 +1,7 @@
 import Header from "@/components/Header";
 import { mount } from "@vue/test-utils";
 
-describe("Test For TodoList", () => {
+describe("Test For Header", () => {
   const wrapper = mount(Header);
 
   it("should renders the correct title", () => {

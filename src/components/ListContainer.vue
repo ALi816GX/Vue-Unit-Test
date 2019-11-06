@@ -11,7 +11,7 @@
       <button
         v-for="button in BUTTONS"
         :key="button.key"
-        @click="changeButtonState(button.name)"
+        @click="changeButtonName(button.name)"
       >
         {{ button.name }}
       </button>
@@ -43,6 +43,10 @@ export default {
     ...mapActions(["changeButtonState"]),
     getNewItem(item) {
       return _.cloneDeep(item);
+    },
+    changeButtonName(buttonName) {
+      this.changeButtonState(buttonName);
+      this.$emit("showButtonName", buttonName);
     }
   }
 };

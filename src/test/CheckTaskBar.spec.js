@@ -5,7 +5,7 @@ import Vuex from "vuex";
 const localVue = createLocalVue();
 localVue.use(Vuex);
 
-describe("Test For TodoList", () => {
+describe("Test For CheckTaskBar", () => {
   let wrapper, store, actions, mockTask;
   beforeEach(() => {
     actions = {
