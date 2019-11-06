@@ -1,11 +1,31 @@
 import InputField from "@/components/InputField";
-import { mount } from "@vue/test-utils";
+import { createLocalVue, mount } from "@vue/test-utils";
+import Vuex from "vuex";
+
+const localVue = createLocalVue();
+localVue.use(Vuex);
 
 describe("Test For TodoList", () => {
-  const wrapper = mount(InputField);
-  wrapper.setData({
-    itemValue: "default",
-    keyUp: "default"
+  let wrapper, store, getters, actions;
+  beforeEach(() => {
+    getters = {
+      listLength: jest.fn()
+    };
+    actions = {
+      saveTaskToList: jest.fn()
+    };
+    store = new Vuex.Store({
+      getters,
+      actions
+    });
+    wrapper = mount(InputField, {
+      localVue,
+      store
+    });
+    wrapper.setData({
+      itemValue: "default",
+      keyUp: "default"
+    });
   });
 
   it("should renders the input and button", () => {
@@ -32,15 +52,22 @@ describe("Test For TodoList", () => {
     input.trigger("keyup.enter");
     //test v-model
     expect(wrapper.vm.keyUp).toBe("test");
+    expect(getters.listLength).toHaveBeenCalled();
+    expect(actions.saveTaskToList).toHaveBeenCalled();
   });
 
   it("Should trigger event When click button ", () => {
     wrapper.setData({
       keyUp: "button"
     });
-      expect(wrapper.vm.keyUp).toBe("button");
-      const button = wrapper.find('input[type="button"]');
-      button.trigger("click");
-      expect(wrapper.vm.keyUp).toBe("test");
+    expect(wrapper.vm.keyUp).toBe("button");
+    const button = wrapper.find('input[type="button"]');
+    button.trigger("click");
+    expect(wrapper.vm.keyUp).toBe("test");
+    expect(getters.listLength).toHaveBeenCalled();
+    expect(getters.listLength).toHaveBeenCalledTimes(1);
+    expect(actions.saveTaskToList).toHaveBeenCalled();
+    expect(actions.saveTaskToList).toHaveBeenCalledTimes(1);
   });
+
 });

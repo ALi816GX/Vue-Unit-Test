@@ -28,6 +28,7 @@ export default {
   methods: {
     ...mapActions(["saveTaskToList"]),
     addItem() {
+      // write for simple test
       this.keyUp = "test";
       if (!_.isEmpty(_.trim(this.itemValue))) {
         const task = {

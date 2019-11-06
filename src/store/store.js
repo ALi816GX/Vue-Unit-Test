@@ -1,3 +1,5 @@
+import _ from 'lodash'
+
 const states = {
   buttonState: "ALL",
   taskList: [],
@@ -17,7 +19,7 @@ const mutations = {
     state.buttonState = value;
   },
   setTaskList(state, value) {
-    state.taskListByState = value;
+    state.taskList = value;
   },
   setTaskListByState(state, value) {
     state.taskListByState = value;
