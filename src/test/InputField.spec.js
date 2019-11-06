@@ -70,4 +70,15 @@ describe("Test For TodoList", () => {
     expect(actions.saveTaskToList).toHaveBeenCalledTimes(1);
   });
 
+  it("Should not trigger event When input touch enter", () => {
+    wrapper.setData({
+      keyUp: "button"
+    });
+    const input = wrapper.find('input[type="text"]');
+    input.setValue("   ");
+    input.trigger("keyup.enter");
+    expect(wrapper.vm.keyUp).toBe("test");
+    expect(getters.listLength).not.toHaveBeenCalled();
+    expect(actions.saveTaskToList).toHaveBeenCalledTimes(0);
+  });
 });
