@@ -65,16 +65,74 @@ describe("Test For store", () => {
     expect(_taskListByState).toEqual(testObject);
   });
 
-  it("test for actions", () => {
+  it("test for actions - saveTaskToList", () => {
+    const commit = jest.fn();
+    const dispatch = jest.fn();
+    const getters = {
+      taskList: [
+        {
+          key: 1,
+          value: "test3",
+          isChecked: false,
+          isEditable: false
+        }
+      ]
+    };
+
+    // test when task not exist
     const task = {
       key: 1,
       value: "test3",
       isChecked: false,
       isEditable: false
     };
-    const _taskList = store.getters.taskList(state);
-    expect(_taskList.length).toEqual(2);
-    // store.actions.saveTaskToList(task)
-    // expect(_taskList.length).toEqual(2);
+    store.actions.saveTaskToList({ commit, getters, dispatch }, task);
+    expect(commit).toHaveBeenCalledTimes(1);
+    expect(commit).toHaveBeenCalledWith("setTaskList", getters.taskList);
+    expect(getters.taskList.length).toBe(1);
+    expect(dispatch).toHaveBeenCalledTimes(1);
+    expect(dispatch).toHaveBeenCalledWith("changeTaskListByState");
+
+    // test when task exist
+    const task2 = {
+      key: 2,
+      value: "test3",
+      isChecked: false,
+      isEditable: false
+    };
+    store.actions.saveTaskToList({ commit, getters, dispatch }, task2);
+    expect(getters.taskList.length).toBe(2);
+  });
+
+  it("test for actions - changeButtonState", () => {
+    const commit = jest.fn();
+    const dispatch = jest.fn();
+    const buttonValue = "Complete";
+    store.actions.changeButtonState({ commit, dispatch }, buttonValue);
+
+    expect(commit).toHaveBeenCalledTimes(1);
+    expect(commit).toHaveBeenCalledWith("setButtonState", buttonValue);
+
+    expect(dispatch).toHaveBeenCalledTimes(1);
+    expect(dispatch).toHaveBeenCalledWith("changeTaskListByState");
+  });
+
+  it("test for actions - changeTaskListByState", () => {
+    const getters = {
+      taskList: [
+        {
+          key: 1,
+          value: "test3",
+          isChecked: false,
+          isEditable: false
+        }
+      ],
+      buttonState: "Complete"
+    };
+    const commit = jest.fn();
+
+    store.actions.changeTaskListByState({commit,getters})
+    expect(commit).toHaveBeenCalledTimes(1);
+    expect(commit).toHaveBeenCalledWith("setTaskListByState",[]);
   });
 });
